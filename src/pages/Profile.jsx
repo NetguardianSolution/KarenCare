@@ -38,7 +38,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="max-w-7xl grid grid-cols-6 gap-8 mx-auto px-4 py-8">
+    <div className="max-w-7xl grid lg:grid-cols-6 gap-8 mx-auto px-4 py-8">
       {/* Main Content */}
       <div className='col-span-4'>
         <h1 className="text-3xl font-bold text-gray-900 mb-2">My Profile</h1>
@@ -113,7 +113,7 @@ const Profile = () => {
       </div>
 
       {/* Side Panel */}
-      <div className='col-span-2 space-y-6'>
+      <div className='col-span-2 sm:col-span-4 space-y-6 '>
         {/* Total Spending Card */}
         <div className="bg-[#4d1515] rounded-2xl shadow-lg p-6 text-white">
           <div className="flex items-center justify-between mb-4">
@@ -133,7 +133,7 @@ const Profile = () => {
         </div>
 
         {/* Ad Space */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 border-2 border-dashed border-gray-300">
+        <div className="bg-white rounded-2xl sm:hidden shadow-lg p-6 border-2 border-dashed border-gray-300">
           <div className="text-center">
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Premium Features</h3>
             <p className="text-gray-600 text-sm mb-4">
