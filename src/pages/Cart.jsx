@@ -83,7 +83,7 @@ const Cart = () => {
                   </div>
                 </div>
                 {/* Quantity + Price + Delete */}
-                <div className="flex items-center space-x-6">
+                <div className=" grid relative sm:left-3 lg:grid-cols-3  items-center space-x-6">
                   <div className="flex items-center border border-gray-300 rounded-lg">
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}

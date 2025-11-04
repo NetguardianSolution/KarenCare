@@ -113,7 +113,7 @@ const Profile = () => {
       </div>
 
       {/* Side Panel */}
-      <div className='col-span-2 sm:col-span-4 space-y-6 '>
+      <div className='lg:col-span-2 col-span-4 space-y-6 '>
         {/* Total Spending Card */}
         <div className="bg-[#4d1515] rounded-2xl shadow-lg p-6 text-white">
           <div className="flex items-center justify-between mb-4">
@@ -133,19 +133,21 @@ const Profile = () => {
         </div>
 
         {/* Ad Space */}
-        <div className="bg-white rounded-2xl sm:hidden shadow-lg p-6 border-2 border-dashed border-gray-300">
+        <div className="bg-white rounded-2xl  shadow-lg p-6 border-2 border-dashed border-gray-300">
           <div className="text-center">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Premium Features</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Crave Core</h3>
             <p className="text-gray-600 text-sm mb-4">
-              Unlock advanced analytics and personalized insights
+              Unlock advanced analytics and personalized insights about your loved one
             </p>
-            <div className="bg-gradient-to-r from-green-400 to-blue-500 rounded-lg p-4 text-white mb-4">
+            {/* <div className="bg-gradient-to-r from-green-400 to-blue-500 rounded-lg p-4 text-white mb-4">
               <p className="font-semibold">Upgrade to Pro</p>
               <p className="text-sm opacity-90">Get detailed spending reports</p>
-            </div>
-            <button className="w-full bg-gray-900 text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200">
-              Download Now
-            </button>
+            </div> */}
+            <a href="">
+              <button className="w-full bg-gray-900 text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200">
+                Download Now
+              </button>
+            </a>
           </div>
         </div>
 
