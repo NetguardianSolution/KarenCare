@@ -70,8 +70,9 @@ const Profile = () => {
                       {new Date(order.date).toLocaleTimeString()}
                     </p>
                   </div>
-                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(order.status)}`}>
-                    {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
+                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor("pending")}`}>
+                    {/* {order.status.charAt(0).toUpperCase() + order.status.slice(1)} */}
+                    Pending
                   </span>
                 </div>
                 <div className="border-t border-gray-200 pt-4">
@@ -149,7 +150,7 @@ const Profile = () => {
         </div>
 
         {/* Quick Stats */}
-        {orders.length > 0 && (
+        {/* {orders.length > 0 && (
           <div className="bg-white rounded-2xl shadow-lg p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Order Summary</h3>
             <div className="space-y-3">
@@ -173,7 +174,7 @@ const Profile = () => {
               </div>
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
