@@ -42,8 +42,10 @@ const ProductPage = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Product Image */}
         <div className=" shadow-inner bg-red-700 rounded-2xl h-96 flex items-center justify-center text-white text-2xl font-bold">
-          
-            <h1 className="text-4xl font-bold text-white mb-2">{product.name}</h1>
+          <div className='text-center bg-white p-4 rounded-full'>
+
+            <h1 className="text-4xl font-bold text-[#4d1515] mb-2">{product.name}</h1>
+          </div>
         </div>
 
         {/* Product Details */}

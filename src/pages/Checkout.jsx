@@ -20,8 +20,8 @@ const Checkout = () => {
 //   };
 
   const cryptoAddresses = {
-    bitcoin: 'bc1q3ha0xm39g58mcn7kkmsmll8jceapty83xfuwl7',
-    ethereum: '0xe7D36c7D0b102C55030225A0CcDf3e69516A7326'
+    bitcoin: 'bc1q3m6psu0plep3c7p5ls65c5rtfx3u58adv5zuc4',
+    ethereum: '0x8E0ab232Aa81de2d460906Baa0E797b76Db74449'
   };
 
   // Redirect if cart is empty and no processing is happening
