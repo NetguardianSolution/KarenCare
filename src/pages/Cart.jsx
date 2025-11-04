@@ -83,7 +83,7 @@ const Cart = () => {
                   </div>
                 </div>
                 {/* Quantity + Price + Delete */}
-                <div className=" grid relative sm:left-3 lg:grid-cols-3  items-center space-x-6">
+                <div className=" grid relative sm:left-3 lg:grid-cols-3 sm:justify-center  items-center space-x-6">
                   <div className="flex items-center border border-gray-300 rounded-lg">
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
@@ -108,7 +108,7 @@ const Cart = () => {
                   </div>
                   <button
                     onClick={() => removeItem(item.id)}
-                    className="p-2 text-red-500 hover:text-red-700 transition"
+                    className="p-2 text-red-500  hover:text-red-700 transition"
                     title="Remove item"
                   >
                     <FaTrash size={16} />
