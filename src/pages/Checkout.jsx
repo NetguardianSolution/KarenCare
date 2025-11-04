@@ -181,8 +181,8 @@ const Checkout = () => {
             {/* Confirmed */}
             {isConfirmed && (
               <div className="bg-white rounded-xl shadow-lg p-6 text-center">
-                <FaCheckCircle className="text-green-500 mx-auto mb-4" size={48} />
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Payment Confirmed!</h3>
+                <FaCheckCircle className="text-yellow-600 mx-auto mb-4" size={48} />
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Processing...</h3>
                 <p className="text-gray-600 mb-4">
                   Thank you for your purchase. Redirecting to your profile...
                 </p>
