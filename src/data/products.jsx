@@ -8,7 +8,7 @@ export const products = [
       originalPrice: 200,
       image: '/api/placeholder/400/400',
       category: 'trust',
-      startDate: '2025-10-11',
+      startDate: '2025-12-11',
       features: [
         'Expert-led sessions',
         'Weekly trust-building exercises',
@@ -25,7 +25,7 @@ export const products = [
       originalPrice: 270,
       image: '/api/placeholder/400/400',
       category: 'communication',
-      startDate: '2025-10-11',
+      startDate: '2025-12-11',
       features: [
         'Active listening techniques',
         'Conflict resolution tools',
@@ -41,7 +41,7 @@ export const products = [
       originalPrice: 230,
       image: '/api/placeholder/400/400',
       category: 'healing',
-      startDate: '2025-10-07',
+      startDate: '2025-11-27',
       features: [
         'Licensed therapists',
         'Emotional release sessions',
@@ -73,7 +73,7 @@ export const products = [
       originalPrice: 255,
       image: '/api/placeholder/400/400',
       category: 'connection',
-      startDate: '2025-10-10',
+      startDate: '2025-12-10',
       features: [
         'Intimacy exercises',
         'Couples bonding tasks',
@@ -89,7 +89,7 @@ export const products = [
       originalPrice: 140,
       image: '/api/placeholder/400/400',
       category: 'self-growth',
-      startDate: '2025-10-15',
+      startDate: '2025-12-15',
       features: [
         'Daily affirmations',
         'Confidence coaching',
@@ -105,7 +105,7 @@ export const products = [
       originalPrice: 400,
       image: '/api/placeholder/400/400',
       category: 'retreat',
-      startDate: '2025-10-06',
+      startDate: '2025-12-06',
       features: [
         '3-day in-person retreat',
         'Expert therapists',
@@ -121,7 +121,7 @@ export const products = [
       originalPrice: 210,
       image: '/api/placeholder/400/400',
       category: 'prevention',
-      startDate: '2025-10-09',
+      startDate: '2025-11-20',
       features: [
         'Boundary-setting sessions',
         'Commitment workshops',
@@ -137,7 +137,7 @@ export const products = [
       originalPrice: 160,
       image: '/api/placeholder/400/400',
       category: 'faith',
-      startDate: '2025-10-09',
+      startDate: '2025-12-09',
       features: [
         'Faith-led discussions',
         'Scripture-based guidance',
@@ -153,7 +153,7 @@ export const products = [
       originalPrice: 285,
       image: '/api/placeholder/400/400',
       category: 'growth',
-      startDate: '2025-10-11',
+      startDate: '2025-12-11',
       features: [
         'Growth-focused lessons',
         'Weekly reflection tasks',
