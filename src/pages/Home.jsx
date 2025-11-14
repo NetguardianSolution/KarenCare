@@ -3,8 +3,29 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { products } from '../data/products';
 import { FaArrowRight} from 'react-icons/fa'
+// import { db } from "../firebase";
+import { collection, getDocs } from "firebase/firestore";
+import { useState, useEffect } from "react";
+
+
 
 const Home = () => {
+
+  // const [products, setProducts] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     const querySnapshot = await getDocs(collection(db, "services"));
+  //     const fetched = querySnapshot.docs.map(doc => ({
+  //       id: doc.id,
+  //       ...doc.data(),
+  //     }));
+  //     setProducts(fetched);
+  //   };
+
+  //   fetchProducts();
+  // }, []);
+
   return (
     <div className='bg-[#FFDAB9]'>
         <div className="max-w-7xl mx-auto  px-4 sm:px-6 lg:px-8 py-8">

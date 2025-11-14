@@ -9,12 +9,16 @@ import Checkout from './pages/Checkout';
 import Profile from './pages/Profile';
 import { CartProvider } from './context/CartContext';
 import Footer from './components/Footer';
+import Login from './admin/Login';
+import CreateProgram from './admin/CreateProgram';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <CartProvider>
       <Router>
         <div className="min-h-screen bg-[#FFDAB9]">
+          <ScrollToTop />
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -22,6 +26,8 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/admin-login" element={<Login />} />
+            {/* <Route path="/create-program" element={<CreateProgram />} /> */}
           </Routes>
           <Footer />
         </div>

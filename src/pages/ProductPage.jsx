@@ -42,7 +42,7 @@ const ProductPage = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Product Image */}
         <div className=" shadow-inner bg-red-700 rounded-2xl h-96 flex items-center justify-center text-white text-2xl font-bold">
-          <div className='text-center bg-white p-4 rounded-full'>
+          <div className='text-center bg-white p-4 m-3 rounded-full'>
 
             <h1 className="text-4xl font-bold text-[#4d1515] mb-2">{product.name}</h1>
           </div>
@@ -88,10 +88,10 @@ const ProductPage = () => {
           <div className="space-y-3">
             <label className="text-lg font-semibold text-gray-900">Quantity</label>
             <div className="flex items-center space-x-4">
-              <div className="flex items-center border border-black rounded-lg">
+              <div className="flex items-center bg-white border  rounded-full">
                 <button
                   onClick={decreaseQuantity}
-                  className="px-4 py-3 text-gray-600 hover:text-gray-800 transition-colors duration-200"
+                  className="px-4 py-3 text-gray-600 font-semibold text-2xl hover:text-gray-800 transition-colors duration-200"
                 >
                   -
                 </button>
@@ -100,7 +100,7 @@ const ProductPage = () => {
                 </span>
                 <button
                   onClick={increaseQuantity}
-                  className="px-4 py-3 text-gray-600 hover:text-gray-800 transition-colors duration-200"
+                  className="px-4 py-3 text-gray-600 font-semibold text-2xl hover:text-gray-800 transition-colors duration-200"
                 >
                   +
                 </button>
