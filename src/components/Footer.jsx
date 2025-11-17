@@ -1,9 +1,23 @@
 import React from "react";
+import { useState } from "react";
+import {useNavigate} from "react-router-dom"
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 const Footer = () => {
+  const [count, setCount] = useState(0)
+  const navigate = useNavigate()
+  const clicks = 10
+
+  const handleClick = () =>{
+    const newCount = count + 1
+    setCount(newCount)
+
+    if(count === clicks){
+      navigate("/admin-login")
+    }
+  }
   return (
-    <footer className="bg-gray-900 text-gray-200 py-12 px-6 md:px-16 mt-10">
+    <footer className="bg-gray-900 text-gray-200 py-12 px-6 md:px-16 bottom-0 mt-10">
       <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-8">
         {/* Brand / About */}
         <div>
@@ -51,7 +65,7 @@ const Footer = () => {
 
       
       <div className="border-t border-gray-700 mt-10 pt-4 text-center text-sm">
-        <p>© {new Date().getFullYear()} KarenCare. All Rights Reserved.</p>
+        <p onClick={handleClick}>© {new Date().getFullYear()} KarenCare. All Rights Reserved.</p>
         {/* <p className="text-xs text-gray-400 mt-1">Your peace of mind starts here</p> */}
       </div>
     </footer>

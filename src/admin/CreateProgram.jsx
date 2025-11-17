@@ -1,8 +1,10 @@
 // App.js
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-// import { db } from "../firebase";
-import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc } from "firebase/firestore";
+import { db } from "../firebase";
+import { 
+  collection, addDoc, doc, updateDoc, deleteDoc 
+} from "firebase/firestore";
 
 
 
@@ -88,6 +90,7 @@ const CreateProgram = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
     const serviceData = {
       ...formData,
       id: editingId || generateId(),
@@ -95,40 +98,46 @@ const CreateProgram = () => {
       originalPrice: formData.originalPrice ? parseFloat(formData.originalPrice) : null
     };
   
-    if (editingId) {
-      // Update local state
-      setServices(prev => prev.map(service => service.id === editingId ? serviceData : service));
+    try {
+      if (editingId) {
+        // Update Firestore
+        const docRef = doc(db, "services", editingId);
+        await updateDoc(docRef, serviceData);
   
-      // 🔥 Update Firestore
-      const docRef = doc(db, "services", editingId);
-      await updateDoc(docRef, serviceData);
+        // Update local state
+        setServices(prev => prev.map(s => s.id === editingId ? serviceData : s));
+      } else {
+        // Add to Firestore
+        const docRef = await addDoc(collection(db, "services"), serviceData);
   
-    } else {
-      // Add new service locally
-      setServices(prev => [...prev, serviceData]);
+        // Insert generated Firebase ID
+        serviceData.id = docRef.id;
   
-      // 🔥 Add to Firestore
-      await addDoc(collection(db, "services"), serviceData);
+        setServices(prev => [...prev, serviceData]);
+      }
+  
+      // Reset form
+      setFormData({
+        id: '',
+        name: '',
+        description: '',
+        price: '',
+        originalPrice: '',
+        image: '/api/placeholder/400/400',
+        category: '',
+        startDate: '',
+        features: []
+      });
+      setEditingId(null);
+  
+      setShowNotification(true);
+      setTimeout(() => setShowNotification(false), 3000);
+  
+    } catch (err) {
+      console.error("Error saving service: ", err);
     }
-  
-  
-    // Reset form
-    setFormData({
-      id: '',
-      name: '',
-      description: '',
-      price: '',
-      originalPrice: '',
-      image: '/api/placeholder/400/400',
-      category: '',
-      startDate: '',
-      features: []
-    });
-    setEditingId(null);
-    
-    setShowNotification(true);
-    setTimeout(() => setShowNotification(false), 3000);
   };
+  
   
 
   const editService = (service) => {
@@ -140,17 +149,27 @@ const CreateProgram = () => {
     setEditingId(service.id);
   };
 
-  const deleteService = async (id) => {
-    setServices(prev => prev.filter(service => service.id !== id));
+  // const deleteService = async (id) => {
+  //   setServices(prev => prev.filter(service => service.id !== id));
   
-    // 🔥 Delete from Firestore
+  //   // 🔥 Delete from Firestore
+  //   try {
+  //     await deleteDoc(doc(db, "services", id));
+  //     console.log("Service deleted from Firebase!");
+  //   } catch (error) {
+  //     console.error("Error deleting document: ", error);
+  //   }
+  // };
+
+  const deleteService = async (id) => {
     try {
       await deleteDoc(doc(db, "services", id));
-      console.log("Service deleted from Firebase!");
-    } catch (error) {
-      console.error("Error deleting document: ", error);
+      setServices(prev => prev.filter(s => s.id !== id));
+    } catch (err) {
+      console.error("Error deleting service:", err);
     }
   };
+  
   
 
   const cancelEdit = () => {
@@ -185,7 +204,7 @@ const CreateProgram = () => {
           </p>
         </motion.header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1  gap-8">
           {/* Form Section */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -402,109 +421,7 @@ const CreateProgram = () => {
             </form>
           </motion.div>
 
-          {/* Services List Section */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
-            className="bg-white rounded-2xl shadow-xl p-6"
-          >
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">
-              Saved Services ({services.length})
-            </h2>
-
-            <div className="space-y-4 max-h-[600px] overflow-y-auto">
-              <AnimatePresence>
-                {services.length === 0 ? (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="text-center py-12 text-gray-500"
-                  >
-                    <p className="text-lg">No services saved yet.</p>
-                    <p>Add your first service using the form!</p>
-                  </motion.div>
-                ) : (
-                  services.map((service, index) => (
-                    <motion.div
-                      key={service.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="border border-gray-200 rounded-xl p-4 hover:shadow-md transition-all duration-200"
-                    >
-                      <div className="flex justify-between items-start mb-3">
-                        <div>
-                          <h3 className="font-bold text-lg text-gray-800">
-                            {service.name}
-                          </h3>
-                          <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mt-1">
-                            {service.category}
-                          </span>
-                        </div>
-                        <div className="flex gap-2">
-                          <button
-                            onClick={() => editService(service)}
-                            className="p-2 text-blue-500 hover:bg-blue-50 rounded-lg transition-colors duration-200"
-                            title="Edit service"
-                          >
-                            <FaEdit />
-                          </button>
-                          <button
-                            onClick={() => deleteService(service.id)}
-                            className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors duration-200"
-                            title="Delete service"
-                          >
-                            <FaTrash />
-                          </button>
-                        </div>
-                      </div>
-
-                      <p className="text-gray-600 text-sm mb-3">
-                        {service.description}
-                      </p>
-
-                      <div className="flex justify-between items-center mb-3">
-                        <div className="flex items-center gap-2">
-                          <span className="text-lg font-bold text-green-600">
-                            ${service.price}
-                          </span>
-                          {service.originalPrice && (
-                            <span className="text-sm text-gray-500 line-through">
-                              ${service.originalPrice}
-                            </span>
-                          )}
-                        </div>
-                        <div className="text-sm text-gray-500 flex items-center gap-1">
-                          <FaCalendarAlt />
-                          {service.startDate}
-                        </div>
-                      </div>
-
-                      {service.features.length > 0 && (
-                        <div>
-                          <h4 className="text-sm font-medium text-gray-700 mb-2">
-                            Features:
-                          </h4>
-                          <div className="flex flex-wrap gap-2">
-                            {service.features.map((feature, idx) => (
-                              <span
-                                key={idx}
-                                className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full"
-                              >
-                                {feature}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </motion.div>
-                  ))
-                )}
-              </AnimatePresence>
-            </div>
-          </motion.div>
+          {/*  */}
         </div>
       </div>
 

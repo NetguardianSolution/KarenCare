@@ -21,8 +21,8 @@ export default function Login() {
     setError('');
     setIsLoading(true);
 
-    const username = "Mattew"
-    const pass = "welcome1234"
+    const username = "Admin"
+    const pass = "Admin1234"
 
     await new Promise(resolve => setTimeout(resolve, 4000));
     

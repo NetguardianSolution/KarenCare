@@ -12,8 +12,11 @@ import Footer from './components/Footer';
 import Login from './admin/Login';
 import CreateProgram from './admin/CreateProgram';
 import ScrollToTop from './components/ScrollToTop';
+// import firebase from './firebase';
 
 function App() {
+  // const ref = firebase.firestore().collection("Programs")
+  // console.log(ref)
   return (
     <CartProvider>
       <Router>
@@ -27,7 +30,7 @@ function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/admin-login" element={<Login />} />
-            {/* <Route path="/create-program" element={<CreateProgram />} /> */}
+            <Route path="/create-program" element={<CreateProgram />} />
           </Routes>
           <Footer />
         </div>
