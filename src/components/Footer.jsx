@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import {useNavigate} from "react-router-dom"
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
   const [count, setCount] = useState(0)
@@ -54,11 +54,13 @@ const Footer = () => {
           <h3 className="text-lg font-semibold text-white mb-3">Stay Connected</h3>
          
 
-          <div className="flex space-x-4 mt-5 text-lg">
-            <a href="#" className="hover:text-white"><FaFacebookF /></a>
-            <a href="#" className="hover:text-white"><FaTwitter /></a>
-            <a href="#" className="hover:text-white"><FaInstagram /></a>
-            <a href="#" className="hover:text-white"><FaLinkedin /></a>
+          <div className="flex items-center space-x-2 mt-5 text-lg">
+            <FaWhatsapp className="text-green-500" />
+            <p
+              className="hover:text-green-400"
+            >
+              +1 (44) 252-9060
+            </p>
           </div>
         </div>
       </div>
